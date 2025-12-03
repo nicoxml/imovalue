@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 15 23 42;
+    /* slate-900 */
+    --foreground: 248 250 252;
+    /* slate-50 */
+    --card: 30 41 59;
+    /* slate-800 */
+    --card-foreground: 248 250 252;
+    /* slate-50 */
+    --popover: 15 23 42;
+    /* slate-900 */
+    --popover-foreground: 248 250 252;
+    /* slate-50 */
+    --primary: 37 99 235;
+    /* blue-600 */
+    --primary-foreground: 255 255 255;
+    --secondary: 30 41 59;
+    /* slate-800 */
+    --secondary-foreground: 248 250 252;
+    /* slate-50 */
+    --muted: 30 41 59;
+    /* slate-800 */
+    --muted-foreground: 148 163 184;
+    /* slate-400 */
+    --accent: 30 41 59;
+    /* slate-800 */
+    --accent-foreground: 248 250 252;
+    /* slate-50 */
+    --destructive: 220 38 38;
+    /* red-600 */
+    --destructive-foreground: 248 250 252;
+    /* slate-50 */
+    --border: 51 65 85;
+    /* slate-700 */
+    --input: 51 65 85;
+    /* slate-700 */
+    --ring: 37 99 235;
+    /* blue-600 */
+    --radius: 0.75rem;
+  }
+
+  .light {
+    --background: 248 250 252;
+    /* slate-50 */
+    --foreground: 15 23 42;
+    /* slate-900 */
+    --card: 255 255 255;
+    /* white */
+    --card-foreground: 15 23 42;
+    /* slate-900 */
+    --popover: 255 255 255;
+    /* white */
+    --popover-foreground: 15 23 42;
+    /* slate-900 */
+    --primary: 37 99 235;
+    /* blue-600 */
+    --primary-foreground: 255 255 255;
+    --secondary: 241 245 249;
+    /* slate-100 */
+    --secondary-foreground: 15 23 42;
+    /* slate-900 */
+    --muted: 241 245 249;
+    /* slate-100 */
+    --muted-foreground: 100 116 139;
+    /* slate-500 */
+    --accent: 241 245 249;
+    /* slate-100 */
+    --accent-foreground: 15 23 42;
+    /* slate-900 */
+    --destructive: 220 38 38;
+    /* red-600 */
+    --destructive-foreground: 248 250 252;
+    /* slate-50 */
+    --border: 226 232 240;
+    /* slate-200 */
+    --input: 226 232 240;
+    /* slate-200 */
+    --ring: 37 99 235;
+    /* blue-600 */
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-slate-900 dark:bg-slate-900 light:bg-slate-100;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate-700 dark:bg-slate-700 light:bg-slate-300 rounded-full border-2 border-slate-900 dark:border-slate-900 light:border-slate-100;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-slate-600 dark:bg-slate-600 light:bg-slate-400;
+}
+
+/* Glass Utilities -> Clean Cards */
+.glass-panel {
+  @apply bg-slate-900/50 backdrop-blur-xl border border-white/10 shadow-xl;
+}
+
+.light .glass-panel {
+  @apply bg-white border-slate-200 shadow-sm backdrop-blur-none;
+}
+
+.glass-card-hover {
+  transition: all 0.3s ease-in-out;
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-2px);
+  @apply shadow-2xl shadow-blue-500/10 border-blue-500/30;
+}
+
+.light .glass-card-hover:hover {
+  @apply shadow-lg shadow-slate-200/50 border-blue-200;
+}
+
+/* Typography */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-slate-400;
+}
+
+.light .text-gradient {
+  @apply text-slate-900 bg-none;
+}
+
+.text-gradient-blue {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-blue-600;
+}
+
+.light .text-gradient-blue {
+  @apply text-blue-600 bg-none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeIn 0.5s ease-out forwards;
+}
